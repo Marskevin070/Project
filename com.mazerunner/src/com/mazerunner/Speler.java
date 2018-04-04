@@ -6,17 +6,20 @@
 package com.mazerunner;
 
 import java.awt.Graphics;
+import java.awt.image.*;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author yassi
  */
 public class Speler extends SpelObject{
-    
     public Speler(int x, int y) {
         super(x, y);
     
     }
+
     
     @Override
     public void teken(Graphics g){

@@ -20,6 +20,6 @@ public class Eindpunt extends SpelObject {
     @Override
     public void teken(Graphics g){
         g.setColor(Color.GREEN);
-        g.fillOval(x, y, 20, 35);
+        g.fillRect(x, y, 50, 50);
     }
 }

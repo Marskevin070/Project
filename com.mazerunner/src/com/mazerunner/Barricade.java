@@ -13,9 +13,11 @@ import java.awt.Graphics;
  * @author yassi
  */
 public class Barricade extends SpelObject {
+    private int pinNummer;
     
-    public Barricade(int x, int y) {
+    public Barricade(int x, int y, int pinNummer) {
         super(x, y);
+        this.pinNummer = pinNummer;
     }
     @Override
     public void teken(Graphics g){
