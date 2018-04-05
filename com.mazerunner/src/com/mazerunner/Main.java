@@ -45,18 +45,25 @@ import javax.swing.JPanel;
         objects.add(eindpunt);
         Random rand = new Random();
         int pinNummer = rand.nextInt(3) + 1;
-        int x = rand.nextInt(speelveld.length);
-        int y = rand.nextInt(speelveld[0].length);
+        //int x = rand.nextInt(speelveld.length);
+        //int y = rand.nextInt(speelveld[0].length);
         
         for(int i = 0; i <4; i++){
-            objects.add(new Sleutel(x, y, pinNummer));
+            int x = rand.nextInt(speelveld.length);
+            int y = rand.nextInt(speelveld[0].length);
+            objects.add(new Sleutel(50*x + 105, 50*y + 98, pinNummer));
         }
         for(int i = 0; i <4; i++){
-            objects.add(new Barricade(x, y, pinNummer));
+            int x = rand.nextInt(speelveld.length);
+            int y = rand.nextInt(speelveld[0].length);
+            objects.add(new Barricade(50*x + 90, 50 * y + 90, pinNummer));
         }
-    }
-    public int pixelToArray(int pixels){
-        
-    }
+        for(int i = 0; i <4; i++){
+            int x = rand.nextInt(speelveld.length);
+            int y = rand.nextInt(speelveld[0].length);
+            objects.add(new Muur(50*x + 90, 50 * y + 90));
+        }
+    
 }
+  }
 
