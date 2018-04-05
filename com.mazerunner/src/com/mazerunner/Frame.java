@@ -17,6 +17,7 @@ public class Frame extends JFrame{
     private Graphics g;
     //private int width, height;
     
+    
     public Frame(int width, int heigth){
         this.setVisible(true);
         this.setPreferredSize(new Dimension(width,heigth));

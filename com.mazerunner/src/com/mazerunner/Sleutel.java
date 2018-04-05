@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mazerunner;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -15,14 +15,23 @@ import java.awt.Graphics;
 public class Sleutel extends SpelObject {
     
     private int pinNummer;
+    private final String Sleutel_Locatie = "src/images/sleutel.png";
+    private BufferedImage Sleutel = null;
     
-    public Sleutel(int x, int y, int pinNummer) {
-        super(x, y);
+    public Sleutel(String objectNaam, int x, int y, int pinNummer) {
+        super(objectNaam,x, y);
         this.pinNummer = pinNummer;
     }
     @Override
+    public void initialiseerAfbeeldingen(){
+        try{
+            Sleutel = ImageIO.read(new File(Sleutel_Locatie));
+        }catch (Exception e){
+            System.out.println("Afbeelding niet gevonden");
+        }
+    }
+    @Override
     public void teken(Graphics g){
-        g.setColor(Color.ORANGE);
-        g.fillOval(x, y, 20, 35);
+        g.drawImage(Sleutel, x, y, 40, 40, null);
 }
 }

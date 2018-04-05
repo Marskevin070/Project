@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mazerunner;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -14,15 +14,25 @@ import java.awt.Graphics;
  */
 public class Barricade extends SpelObject {
     private int pinNummer;
+    private final String Barricade_Locatie = "src/images/barricade.png";
+    private BufferedImage Barricade = null;
     
-    public Barricade(int x, int y, int pinNummer) {
-        super(x, y);
+    public Barricade(String objectNaam, int x, int y, int pinNummer) {
+        super(objectNaam, x, y);
         this.pinNummer = pinNummer;
+    }
+    
+    @Override
+    public void initialiseerAfbeeldingen(){
+        try{
+            Barricade = ImageIO.read(new File(Barricade_Locatie));
+        }catch (Exception e){
+            System.out.println("Afbeelding niet gevonden");
+        }
     }
     @Override
     public void teken(Graphics g){
-        g.setColor(Color.CYAN);
-        g.fillRect(x, y, 50, 50);
+        g.drawImage(Barricade, x, y, 50, 50, null);
         
     }
 }

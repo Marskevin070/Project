@@ -1,25 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mazerunner;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author yassi
  */
 public class Eindpunt extends SpelObject {
+    private final String Einde_Locatie = "src/images/einde.png";
+    private BufferedImage Einde = null;
     
-    public Eindpunt(int x, int y) {
-        super(x, y);
+    public Eindpunt(String objectNaam, int x, int y) {
+        super(objectNaam,x, y);
+    }
+    @Override
+    public void initialiseerAfbeeldingen(){
+        try{
+            Einde = ImageIO.read(new File(Einde_Locatie));
+        }catch (Exception e){
+            System.out.println("Afbeelding niet gevonden");
+        }
     }
     @Override
     public void teken(Graphics g){
-        g.setColor(Color.GREEN);
-        g.fillRect(x, y, 50, 50);
+        g.drawImage(Einde, x, y, 50, 50, null);
     }
 }

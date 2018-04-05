@@ -14,12 +14,16 @@ import java.awt.Graphics;
 public class SpelObject {
     protected int x;
     protected int y;
+    protected String objectNaam;
     
-    public SpelObject (int x,int y){
+    public SpelObject (String objectNaam,int x,int y){
         this.x = x;
         this.y = y;
+        this.objectNaam = objectNaam;
         
     }
+    public void initialiseerAfbeeldingen(){};
+    
     public void teken(Graphics g){};
 
     public int getX() {
@@ -37,6 +41,7 @@ public class SpelObject {
     public void setY(int y) {
         this.y = y;
     }
+
     
     
 }

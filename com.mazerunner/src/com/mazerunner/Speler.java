@@ -1,28 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mazerunner;
 
 import java.awt.Graphics;
-import java.awt.image.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
+
+
+
 
 /**
  *
  * @author yassi
  */
 public class Speler extends SpelObject{
-    public Speler(int x, int y) {
-        super(x, y);
     
+    private final String Speler_Locatie = "src/images/speler.png";
+    private BufferedImage Speler = null;
+    
+    
+    
+    public Speler (String objectNaam, int x, int y) {
+        super(objectNaam,x, y);
+    }
+    
+    @Override 
+    public void initialiseerAfbeeldingen(){
+        try{
+            Speler = ImageIO.read(new File(Speler_Locatie));
+        }catch (Exception e){
+            System.out.println("Afbeelding niet gevonden");
+        }
     }
 
     
     @Override
     public void teken(Graphics g){
-        g.fillOval(x, y, 20, 35);
+        g.drawImage(Speler, x, y, 30,40, null);
+        
     }
 }
