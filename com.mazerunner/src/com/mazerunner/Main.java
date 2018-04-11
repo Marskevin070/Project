@@ -3,6 +3,10 @@ package com.mazerunner;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JComponent;
@@ -12,16 +16,53 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-  public class Main extends JComponent {
+  public class Main extends JComponent implements ActionListener, KeyListener {
   private SpelObject[][] speelveld = new SpelObject[10][10];
   private Speler speler = new Speler("Piraat",105,98);
   private Eindpunt eindpunt = new Eindpunt("eindpuntObject",545,540);
   private ArrayList<SpelObject> objects = new ArrayList<>();
   private Boolean objectCheck[][] = new Boolean[10][10];
+  private final Frame frame;
+  
 
-  public Main() {
-
+  public void keyTyped(KeyEvent e){
+      //Geen methode
+  }
+  public void keyReleased(KeyEvent e){
+      System.out.println("Just to let you know a key has been released");
+  }
+  
+  @Override
+  public void keyPressed(KeyEvent e){
+    
+      if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+      speler.playerMoveRight();
+  }
+  
+      if(e.getKeyCode() == KeyEvent.VK_LEFT){
+      speler.playerMoveLeft();
+  }
+      if(e.getKeyCode() == KeyEvent.VK_UP){
+      speler.playerMoveUp();
+  }
+      if(e.getKeyCode() == KeyEvent.VK_DOWN){
+      speler.playerMoveDown();
+  }
+       
+      
+  }
+  public Main(Frame frame) {
+        this.frame = frame;  
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
     }
+  @Override
+  public void actionPerformed(ActionEvent e){
+      repaint();
+      
+              
+  }
     @Override
     public void paintComponent(Graphics g){
         for(int i = 0; i<speelveld.length; i++){
@@ -33,8 +74,13 @@ import javax.swing.JPanel;
                 }
             }
         }
-
+        
     }
+//    public class Handler implements KeyListener{
+//        public void actionPerformed(ActionEvent e){
+////            
+////        }
+//    }
     public void gridLayout(Graphics g){
         speelveld[0][0] = speler;
         speelveld[9][9] = eindpunt;
@@ -43,7 +89,6 @@ import javax.swing.JPanel;
         int pinNummer = rand.nextInt(3) + 1;
         //int x = rand.nextInt(speelveld.length);
         //int y = rand.nextInt(speelveld[0].length);
-
         for(int i = 0; i <4; i++){
             int x = rand.nextInt(speelveld.length);
             int y = rand.nextInt(speelveld[0].length);
