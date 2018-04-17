@@ -5,18 +5,25 @@
  */
 package com.mazerunner;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 /**
  *
  * @author yassi
  */
+
 public class Frame extends JFrame{
     private Graphics g;
     //private int width, height;
-    
+
+
     
     public Frame(int width, int heigth){
         this.setVisible(true);
@@ -32,12 +39,14 @@ public class Frame extends JFrame{
         main.setPreferredSize(new Dimension(width,heigth));
         this.add(main);
         main.gridLayout(g);
+        
+        
     }
-
-
+    
+    
+  
 
     public static void main(String[] args){
-        Frame frame = new Frame(700,800);
-        
+        Frame frame = new Frame(700,800);        
     }
 }

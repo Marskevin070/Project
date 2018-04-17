@@ -23,7 +23,7 @@ public class SpelObject {
         
     }
     public void initialiseerAfbeeldingen(){};
-    
+    public void update(){};
     public void teken(Graphics g){};
 
     public int getX() {

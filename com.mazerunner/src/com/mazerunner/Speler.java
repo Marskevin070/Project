@@ -4,6 +4,7 @@ package com.mazerunner;
 import java.awt.Graphics;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -22,8 +23,8 @@ public class Speler extends SpelObject{
     
     private final String Speler_Locatie = "src/images/speler.png";
     private BufferedImage Speler = null;   
-    private int velx = 50;
-    private int vely = 50;
+    private Sleutel zak = null;
+    
     
     
     public Speler (String objectNaam, int x, int y) {
@@ -31,53 +32,58 @@ public class Speler extends SpelObject{
         
     }
     
-    @Override 
+    
+    
+     
     public void initialiseerAfbeeldingen(){
         try{
             Speler = ImageIO.read(new File(Speler_Locatie));
-        }catch (Exception e){
+        }catch (IOException e){
             System.out.println("Afbeelding niet gevonden");
-        }
+       }
     }
 
-    
-    @Override
+    public Sleutel getZak() {
+        return this.zak;
+    }
+    public void setZak(Sleutel zak) {
+        this.zak = zak;
+    }
     public void teken(Graphics g){
         g.drawImage(Speler, x, y, 30,40, null);
     }
     
+    
+    
     public int getX(){
         return x;
     }
+    
     public int getY(){
         return y;
     }
-    public void playerMoveRight(){
-       if ( x >=0 && x <= 550 )
-    {
-       x = x + velx;
-    }
     
+    public void playerMoveRight(){
+    x = x + 50;
+    y = y + 0;
     }
     public void playerMoveLeft(){
-        if ( x >=0 && x <= 550 )
-    {
-        x = x - velx;
-    }
+    x = x - 50;
+    y = y + 0;
     }
     public void playerMoveUp(){
-        if ( y >=0 && y <= 550 )
-    {
-        y = y - vely;
-    }
+    x = x + 0;
+    y = y - 50;
     }
     public void playerMoveDown(){
-        if ( y >=0 && y <= 550 )
-    {
-        y = y + vely;
+    x = x + 0;
+    y = y + 50;
     }
-    }
+
+    
 }
+
+
 
 
 
